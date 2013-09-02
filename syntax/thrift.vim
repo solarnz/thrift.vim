@@ -44,14 +44,18 @@ syn region thriftStringDouble matchgroup=None start=+"+  end=+"+
 syn match thriftNumber "-\=\<\d\+\>" contained
 
 " Keywords
-syn keyword thriftKeyword namespace
+syn keyword thriftStatement namespace
+syn keyword thriftInclude include
 syn keyword thriftKeyword xsd_all xsd_optional xsd_nillable xsd_attrs
-syn keyword thriftKeyword include cpp_include cpp_type const optional required
-syn keyword thriftBasicTypes void bool byte i16 i32 i64 double string binary
-syn keyword thriftStructure map list set struct typedef exception enum throws
+syn keyword thriftKeyword cpp_include cpp_type const optional required
+syn keyword thriftStatement throws typedef
+syn keyword thriftBasicTypes void bool byte string binary
+syn keyword thriftBasicTypes i16 i32 i64 double
+syn keyword thriftType map list set
+syn keyword thriftClass struct exception enum
 
 " Special
-syn match thriftSpecial "\d\+:"
+syn match thriftNumber "\d\+:"
 
 " Structure
 syn keyword thriftStructure service oneway extends
@@ -71,15 +75,19 @@ if version >= 508 || !exists("did_thrift_syn_inits")
     command! -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink thriftComment Comment
-  HiLink thriftKeyword Special
-  HiLink thriftBasicTypes Type
-  HiLink thriftStructure StorageClass
-  HiLink thriftTodo Todo
-  HiLink thriftString String
-  HiLink thriftNumber Number
-  HiLink thriftSpecial Special
-  HiLink thriftStructure Structure
+  HiLink   thriftComment      Comment
+  HiLink   thriftKeyword      Special
+  HiLink   thriftBasicTypes   Type
+  HiLink   thriftType         Type
+  HiLink   thriftStructure    StorageClass
+  HiLink   thriftTodo         Todo
+  HiLink   thriftString       String
+  HiLink   thriftNumber       Number
+  HiLink   thriftSpecial      Special
+  HiLink   thriftStructure    Structure
+  HiLink   thriftStatement    Statement
+  HiLink   thriftInclude      Include
+  HiLink   thriftClass        Type
 
   delcommand HiLink
 endif
