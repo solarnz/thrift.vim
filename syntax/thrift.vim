@@ -53,6 +53,7 @@ syn keyword thriftBasicTypes void bool byte string binary
 syn keyword thriftBasicTypes i16 i32 i64 double
 syn keyword thriftType map list set
 syn keyword thriftClass struct exception enum
+syn region  thriftString start=+"+ end=+"+
 
 " Special
 syn match thriftNumber "\d\+:"
@@ -88,6 +89,7 @@ if version >= 508 || !exists("did_thrift_syn_inits")
   HiLink   thriftStatement    Statement
   HiLink   thriftInclude      Include
   HiLink   thriftClass        Type
+  HiLink   thriftString       String
 
   delcommand HiLink
 endif
