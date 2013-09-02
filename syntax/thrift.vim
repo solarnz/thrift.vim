@@ -33,8 +33,8 @@ endif
 syn keyword thriftTodo TODO todo FIXME fixme XXX xxx contained
 
 " Comments
-syn match thriftComment "#.*" contains=thriftTodo
-syn region thriftComment start="/\*" end="\*/" contains=thriftTodo
+syn match thriftComment "#.*" contains=thriftTodo,@Spell
+syn region thriftComment start="/\*" end="\*/" contains=thriftTodo,@Spell
 syn match thriftComment "//.\{-}\(?>\|$\)\@="
 
 " String
