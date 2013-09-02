@@ -2,10 +2,6 @@
 " Language: Thrift
 " Maintainer: Martin Smith <martin@facebook.com>
 " Last Change: $Date: $
-" Copy to ~/.vim/
-" Add to ~/.vimrc
-"  au BufRead,BufNewFile *.thrift set filetype=thrift
-"  au! Syntax thrift source ~/.vim/thrift.vim
 "
 " $Id: $
 "
