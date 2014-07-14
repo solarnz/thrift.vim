@@ -17,8 +17,6 @@ Use your usual plugin manager. I recommend [NeoBundle](https://github.com/Shougo
 
     Bundle 'solarnz/thrift.vim'
 
-    ```NeoBundle 'solarnz/thrift.vim'```
-
 ## Screenshots ##
 
 ![Thrift file example.](https://s3.amazonaws.com/solarnz.github.images/thrift.vim/thrift.png)
