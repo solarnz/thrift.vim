@@ -2,6 +2,10 @@
 " Language: Thrift
 " Maintainer: Martin Smith <martin@facebook.com>
 " Last Change: $Date: $
+" Copy to ~/.vim/
+" Add to ~/.vimrc
+"  au BufRead,BufNewFile *.thrift set filetype=thrift
+"  au! Syntax thrift source ~/.vim/thrift.vim
 "
 " $Id: $
 "
@@ -33,8 +37,8 @@ endif
 syn keyword thriftTodo TODO todo FIXME fixme XXX xxx contained
 
 " Comments
-syn match thriftComment "#.*" contains=thriftTodo,@Spell
-syn region thriftComment start="/\*" end="\*/" contains=thriftTodo,@Spell
+syn match thriftComment "#.*" contains=thriftTodo
+syn region thriftComment start="/\*" end="\*/" contains=thriftTodo
 syn match thriftComment "//.\{-}\(?>\|$\)\@="
 
 " String
@@ -44,19 +48,14 @@ syn region thriftStringDouble matchgroup=None start=+"+  end=+"+
 syn match thriftNumber "-\=\<\d\+\>" contained
 
 " Keywords
-syn keyword thriftStatement namespace
-syn keyword thriftInclude include
+syn keyword thriftKeyword namespace
 syn keyword thriftKeyword xsd_all xsd_optional xsd_nillable xsd_attrs
-syn keyword thriftKeyword cpp_include cpp_type const optional required
-syn keyword thriftStatement throws typedef
-syn keyword thriftBasicTypes void bool byte string binary
-syn keyword thriftBasicTypes i16 i32 i64 double
-syn keyword thriftType map list set
-syn keyword thriftClass union struct exception enum
-syn region  thriftString start=+"+ end=+"+
+syn keyword thriftKeyword include cpp_include cpp_type const optional required
+syn keyword thriftBasicTypes void bool byte i8 i16 i32 i64 double string binary
+syn keyword thriftStructure map list set struct typedef exception enum throws union
 
 " Special
-syn match thriftNumber "\d\+:"
+syn match thriftSpecial "\d\+:"
 
 " Structure
 syn keyword thriftStructure service oneway extends
@@ -76,23 +75,17 @@ if version >= 508 || !exists("did_thrift_syn_inits")
     command! -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink   thriftComment      Comment
-  HiLink   thriftKeyword      Special
-  HiLink   thriftBasicTypes   Type
-  HiLink   thriftType         Type
-  HiLink   thriftStructure    StorageClass
-  HiLink   thriftTodo         Todo
-  HiLink   thriftString       String
-  HiLink   thriftNumber       Number
-  HiLink   thriftSpecial      Special
-  HiLink   thriftStructure    Structure
-  HiLink   thriftStatement    Statement
-  HiLink   thriftInclude      Include
-  HiLink   thriftClass        Type
-  HiLink   thriftString       String
+  HiLink thriftComment Comment
+  HiLink thriftKeyword Special
+  HiLink thriftBasicTypes Type
+  HiLink thriftStructure StorageClass
+  HiLink thriftTodo Todo
+  HiLink thriftString String
+  HiLink thriftNumber Number
+  HiLink thriftSpecial Special
+  HiLink thriftStructure Structure
 
   delcommand HiLink
 endif
 
 let b:current_syntax = "thrift"
-
